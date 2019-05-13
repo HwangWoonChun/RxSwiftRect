@@ -17,74 +17,20 @@ RxSwfit Recture
 * onNext : 새로운 리턴 값이 생성 될때 마다 onNext 호출
 * onCompleted : 오류 발생시 호출, 중간에 발생시 더 이상 onNext 호출 하지 않는다.
 * onError : 오류를 발생 하지 않았다면 모든 값을 리턴 받았을 때 호출 된다.
-* dispose : Subsribe 취소
+* dispose : Observable의 사용이 끝나면 메모리에서 해제
 * * *
 <pre><code>
-    func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
-        return Observable.create { seal in
-            self.asyncLoadImage(from: imageUrl) { image in
-                seal.onNext(image)
-                seal.onCompleted()
-            }
-            return Disposables.create()
+    var disposeBag : DisposeBag = DisposeBag()
+    
+    func makeSimpleObservable(){
+        let stringSequence = Observable.just("RxSwift")
+        let subscribe      = stringSequence.subscribe{(event) in
+            print(event)
         }
+        subscribe.disposed(by : disposeBag)
     }
     
-    @IBAction func onLoadImage(_ sender: Any) {
-        self.imageView?.image = nil
-        
-        self.disposable = rxswiftLoadImage(from: loadingImageUrl!)
-            .subscribe({ result in
-                switch result {
-                case let .next(image):
-                    self.imageView?.image = image
-                    
-                case let .error(err):
-                    print(err.localizedDescription)
-                    
-                case .completed:
-                    break
-                }
-            })
-    }
-</pre></code>
-* * *
-4. disposeBag : Bag에 취소 할 애들을 담는 함수
-<pre></code>
-var disposeBag : DisposeBag = DisposeBag()
-
-    func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
-        //Create — 직접적인 코드 구현을 통해 옵저버 메서드를 호출하여 Observable을 생성한다
-        return Observable.create { seal in
-            self.asyncLoadImage(from: imageUrl) { image in
-                seal.onNext(image)
-                seal.onCompleted()
-            }
-            return Disposables.create()
-        }
-    }
-    
-    @IBAction func onLoadImage(_ sender: Any) {
-        self.imageView?.image = nil
-        
-        rxswiftLoadImage(from: loadingImageUrl!)
-            .subscribe({ result in
-                switch result {
-                case let .next(image):
-                    self.imageView?.image = image
-                    
-                case let .error(err):
-                    print(err.localizedDescription)
-                    
-                case .completed:
-                    break
-                }
-            })
-            .disposed(by:disposeBag)
-    }
-    
-    @IBAction func onCancel(){
-        disposeBag = DisposeBag() //초기화 
-    }
-        
+    func onCancel () {
+        disposeBag = DisposeBag()
+    }   
 </pre></code>
