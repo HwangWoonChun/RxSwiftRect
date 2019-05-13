@@ -97,7 +97,38 @@ RxSwfit Recture
     //onCompleted
     //onDispsed
 </pre></code>
-* FlatMap : 데이터를 넣으면 스트림이 나오는 함수
+* FlatMap : 원본 옵져버블을 변형시키는데, 새로운 옵져버블을 만든다. sequenceInt에서 발행한 아이템에서 새로운 Observable을 만들고 발행한 아이템을 구독하여 출력
+<pre><code>
+        let sequenceInt = Observable.of(1,2,3)
+        let sequenceStr = Observable.of("A","B","C","D")
+        
+        sequenceInt
+            .flatMap({(x : Int) -> Observable<String> in
+                print("Int : \(x)")
+                return sequenceStr
+        })
+            .subscribe {
+                print("String : \($0)")
+        }
+        
+//        Int : 1
+//        String : next(A)
+//        Int : 2
+//        String : next(B)
+//        String : next(A)
+//        Int : 3
+//        String : next(C)
+//        String : next(B)
+//        String : next(A)
+//        String : next(D)
+//        String : next(C)
+//        String : next(B)
+//        String : next(D)
+//        String : next(C)
+//        String : next(D)
+//        String : completed
+
+</pre></code>
 * * *
 3. 필터링 : 각각의 옵져버블의 결과를 합쳐서 처리 할 수 있다.
 * Filter : 받은 데이터에 조건문을 넣어 참 값 만 내려보낸다.
@@ -124,4 +155,4 @@ RxSwfit Recture
 * Single : Complete되는 시점에 항목 하나 받는 함수
 * * *
 4. 수학 및 집계 연산자 : Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자들
-* Concart : 여러개의 Observable 을 순서대로 결합
+* Concat : 여러개의 Observable 을 순서대로 결합
