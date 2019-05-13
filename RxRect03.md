@@ -54,6 +54,7 @@ RxSwfit Recture
 var disposeBag : DisposeBag = DisposeBag()
 
     func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
+        //Create — 직접적인 코드 구현을 통해 옵저버 메서드를 호출하여 Observable을 생성한다
         return Observable.create { seal in
             self.asyncLoadImage(from: imageUrl) { image in
                 seal.onNext(image)
