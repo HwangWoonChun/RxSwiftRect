@@ -81,4 +81,9 @@ var disposeBag : DisposeBag = DisposeBag()
             })
             .disposed(by:disposeBag)
     }
+    
+    @IBAction func onCancel(){
+        disposeBag = DisposeBag() //초기화 
+    }
+        
 </pre></code>
