@@ -43,6 +43,37 @@ RxSwfit Recture
     //onCompleted
     //onDispsed
 </pre></code>
+* create : 직접 Observable을 만들 수 있는 함수
+<pre><code>
+    func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
+        return Observable.create { seal in
+            asyncLoadImage(from: imageUrl) { image in
+                seal.onNext(image)
+                seal.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
+    @IBAction func onLoadImage(_ sender: Any) {
+        imageView.image = nil
+
+        _ = rxswiftLoadImage(from: LARGER_IMAGE_URL)
+            .observeOn(MainScheduler.instance)
+            .subscribe({ result in
+                switch result {
+                case let .next(image):
+                    self.imageView.image = image
+
+                case let .error(err):
+                    print(err.localizedDescription)
+
+                case .completed:
+                    break
+                }
+            })
+    }
+</pre></code>
 * * *
 2. Observable 변환과 관련된 연산자
 * Map : 받은 데이터를 가공하여 내려보낸다.
