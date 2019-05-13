@@ -17,7 +17,7 @@ RxSwfit Recture
 * onNext : 새로운 리턴 값이 생성 될때 마다 onNext 호출
 * onCompleted : 오류 발생시 호출, 중간에 발생시 더 이상 onNext 호출 하지 않는다.
 * onError : 오류를 발생 하지 않았다면 모든 값을 리턴 받았을 때 호출 된다.
-* dispose : Subsribe 
+* dispose : Subsribe 취소
 * * *
 <pre><code>
     func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
@@ -46,5 +46,39 @@ RxSwfit Recture
                     break
                 }
             })
+    }
+</pre></code>
+* * *
+4. disposeBag : Bag에 취소 할 애들을 담는 함수
+<pre></code>
+var disposeBag : DisposeBag = DisposeBag()
+
+    func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
+        return Observable.create { seal in
+            self.asyncLoadImage(from: imageUrl) { image in
+                seal.onNext(image)
+                seal.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
+    @IBAction func onLoadImage(_ sender: Any) {
+        self.imageView?.image = nil
+        
+        rxswiftLoadImage(from: loadingImageUrl!)
+            .subscribe({ result in
+                switch result {
+                case let .next(image):
+                    self.imageView?.image = image
+                    
+                case let .error(err):
+                    print(err.localizedDescription)
+                    
+                case .completed:
+                    break
+                }
+            })
+            .disposed(by:disposeBag)
     }
 </pre></code>
