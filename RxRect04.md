@@ -61,11 +61,30 @@ RxSwfit Recture
             })
             .disposed(by : disposeBag)
     }
-</pre></code>
      //RR
      //X
     //onCompleted
     //onDispsed
+</pre></code>
 * * *
 * Filter : 받은 데이터에 조건문을 넣어 참 값 만 내려보낸다.
+<pre><code>
+    func exFilter(){
+        Observable.from(["R","X"])
+            .filter{$0 == "R"}
+            .subscribe(onNext : { s in
+                print(s)
+            }, onError : { err in
+                print(err.localizedDescription)
+            }, onCompleted : {
+                print("onCompleted")
+            }, onDisposed : {
+                print("onDispsed")
+            })
+            .disposed(by : disposeBag)
+    }
+     //R
+    //onCompleted
+    //onDispsed
+</pre></code>
 * * *
