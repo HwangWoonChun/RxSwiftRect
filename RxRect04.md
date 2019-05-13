@@ -155,3 +155,22 @@ RxSwfit Recture
 * * *
 4. 수학 및 집계 연산자 : Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자들
 * Concat : 여러개의 Observable 을 순서대로 결합
+* * *
+5. Observable Utility
+* Subscribe : Observable로부터 받은 데이터와 알림을 처리, onNext, onError, onComplete, onError
+<pre><code>
+    func subscribe(){
+        Observable.from(["RXSwift","In","4","Hour"])
+            .single()
+            .subscribe(onNext : { s in
+                print(s)
+            }, onError : { err in
+                print(err.localizedDescription)
+            }, onCompleted : {
+                print("onCompleted")
+            }, onDisposed : {
+                print("onDispsed")
+            })
+            .disposed(by : disposeBag)
+    }
+</pre></code>
