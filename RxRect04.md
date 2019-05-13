@@ -152,7 +152,6 @@ RxSwfit Recture
     //onDispsed
 </pre></code>
 * First : 맨 처음 항목만 받고 Complete되는 시점에 받거나, 조건문과 결합하여 첫 번째로 참인 데이터만 받는 함수
-* Single : Complete되는 시점에 항목 하나 받는 함수
 * * *
 4. 수학 및 집계 연산자 : Observable이 배출하는 항목 전체를 대상으로 동작하는 연산자들
 * Concat : 여러개의 Observable 을 순서대로 결합
