@@ -1,6 +1,44 @@
 # RxSwfitRect
 RxSwfit Recture
 
-2강 RxSwift 란?
+2강 Observable
 ===========
-1. RxSwift : 옵져버블 스트림을 이용하여 비동기 프로그래밍을 지원하는 API
+1. Observalble : 하나의 일련의 사건을 말한다. 
+* 기본 흐름 : 데이터를 배출할떄 마다 전달받고(onNext), 옵저버와 연결되어(subscribe) 결과를 받는다.
+
+<pre><code>
+@IBAction func onLoadImage(_ sender: Any) {
+        imageView.image = nil
+
+        _ = rxswiftLoadImage(from: LARGER_IMAGE_URL)
+            .observeOn(MainScheduler.instance)
+            .subscribe({ result in
+                switch result {
+                case let .next(image):
+                    self.imageView.image = image
+
+                case let .error(err):
+                    print(err.localizedDescription)
+
+                case .completed:
+                    break
+                }
+            })
+    }
+
+    @IBAction func onCancel(_ sender: Any) {
+        // TODO: cancel image loading
+    }
+
+    // MARK: - RxSwift
+
+    func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
+        return Observable.create { seal in
+            asyncLoadImage(from: imageUrl) { image in
+                seal.onNext(image)
+                seal.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+</pre></code>
