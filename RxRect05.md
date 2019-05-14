@@ -26,7 +26,7 @@ RxSwfit Recture
 ![Alt text](http://reactivex.io/documentation/operators/images/single.png)
 * * *
 6. Flatmap
-![Alt text](http://reactivex.io/documentation/operators/images/flatmap.png)
+![Alt text](http://reactivex.io/documentation/operators/images/flatMap.c.png)
 * * *
 7. Concat
 ![Alt text](http://reactivex.io/documentation/operators/images/concat.png)
