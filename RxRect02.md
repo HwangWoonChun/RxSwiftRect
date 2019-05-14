@@ -26,10 +26,6 @@ RxSwfit Recture
             })
     }
 
-    @IBAction func onCancel(_ sender: Any) {
-        // TODO: cancel image loading
-    }
-
     // MARK: - RxSwift
 
     func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
