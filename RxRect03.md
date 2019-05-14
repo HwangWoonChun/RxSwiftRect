@@ -31,12 +31,10 @@ RxSwfit Recture
     }
 
     @IBAction func onCancel(_ sender: Any) {
-        // TODO: cancel image loading
         disposable?.dispose()
     }
 
     // MARK: - RxSwift
-
     func rxswiftLoadImage(from imageUrl: String) -> Observable<UIImage?> {
         return Observable.create { seal in
             asyncLoadImage(from: imageUrl) { image in
