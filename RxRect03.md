@@ -9,7 +9,7 @@ RxSwfit Recture
 * * *
 3. 네트워크 취소를 한방에 처리 못하는 기존의 코드는 OperationQueue를 직접 구현 하거나, 캔슬플래그를 타이머로 계속 돌려 체크하는 방법이 있다.
 * * *
-4. Insert를 통해 DisposeBag에 담기
+4. Insert 함수 통해 DisposeBag에 담기
 <pre><code>
     var disposable : Disposable?
     
@@ -50,7 +50,7 @@ RxSwfit Recture
 
 </pre></code>
 * * *
-5. Disposed 함수 사용
+5. Disposed 함수 통해 DisposeBag에 담기
 <pre><code>
     @IBAction func onLoadImage(_ sender: Any) {
         imageView.image = nil
