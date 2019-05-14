@@ -3,7 +3,7 @@ RxSwfit Recture
 
 4강 기본 Operator
 ===========
-1. Create : 개발자가 직접 Observable를 만드는 operator
+1. Create<생성> : 개발자가 직접 Observable를 만드는 operator
 <pre><code>
     func rxswiftLoadImage(from imageUrl: String) -> Observable {
         return Observable.create { seal in
@@ -16,7 +16,7 @@ RxSwfit Recture
     }
 </pre></code>
 * * *
-2. Just : 직접 데이터를 그대로 내러 보내는 operator
+2. Just<생성> : 직접 데이터를 그대로 내러 보내는 operator
 <pre><code>
     @IBAction func exJust1() {
         Observable.just("Hello World")
@@ -37,7 +37,7 @@ RxSwfit Recture
     //[“Hello”,”World”] 배열 그대로 나옴
 </pre></code>
 * * *
-3. From : 배열에서 데이터 하나하나 꺼내오는 operator
+3. From<생성> : 배열에서 데이터 하나하나 꺼내오는 operator
 <pre><code>
     @IBAction func exFrom1() {
         Observable.from(["RxSwift", "In", "4", "Hours"])
@@ -52,7 +52,7 @@ RxSwfit Recture
     //Hours
 </pre></code>
 * * *
-4. Map : 데이터를 가공하여 전달 해주는 Operator
+4. Map<변환> : 데이터를 가공하여 전달 해주는 Operator
 <pre><code>
     @IBAction func exMap1() {
         Observable.just("Hello")
@@ -76,7 +76,7 @@ RxSwfit Recture
     //3
 </pre></code>
 * * *
-5. Filter : 데이터가 조건문에 걸러져 참인 경우 내려보내는 Operator
+5. Filter<필터링> : 데이터가 조건문에 걸러져 참인 경우 내려보내는 Operator
 <pre><code>
     @IBAction func exFilter() {
         Observable.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
