@@ -13,7 +13,7 @@ RxSwiftRect Recture
 * GCD : 운영 체제가 스레드 풀을 관리하는 C 기반 API, DispatchQueue 클래스를 이용
     * ConcurrencyQueue : 스레드 작업을 동시실행(global, main)
     * SerialQueue : 스레드 작업을 순서대로 실행
-``` c
+``` swift
    //동기
     @IBAction func onLoadSync(_ sender: Any) {
         
