@@ -170,7 +170,7 @@ class ViewController: UIViewController {
         return password.count > 5
     }
 }
-</pre></code>
+```
 ``` swift
 let subject = PublishSubject<Int>()
 subject.onNext(0)
