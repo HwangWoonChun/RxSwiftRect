@@ -98,7 +98,8 @@ class ViewController: UIViewController {
     }
 </pre></code>
 * * *
-5. Subject : 외부에서 통제하는 옵저버블을 생성
+5. Subject : 외부에서 통제하는 옵저버블을 생성, bind함수를 통해 통제 권한을 넘겨 준다.
+* Behavior 는 초기값을 가지는 옵져버블을 만든다.
 <pre><code>
 import RxCocoa
 import RxSwift
@@ -131,20 +132,10 @@ class ViewController: UIViewController {
 
         //input 처리
         idField.rx.text.orEmpty
-            .bind(to: idInputText)
-            .disposed(by: disposeBag)
-        
-        idField.rx.text.orEmpty
             .map(checkEmailValid)
             .bind(to: idValid)
             .disposed(by: disposeBag)
-        
-        
-        pwField.rx.text.orEmpty
-            .bind(to: pwInputText)
-            .disposed(by: disposeBag)
-        
-        
+
         pwField.rx.text.orEmpty
             .map(checkPasswordValid)
             .bind(to: idValid)
