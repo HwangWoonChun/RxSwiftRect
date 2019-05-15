@@ -98,7 +98,7 @@ class ViewController: UIViewController {
     }
 </pre></code>
 * * *
-5. Subject : 외부에서 통제하는 옵저버블을 생성, bind함수를 통해 통제 권한을 넘겨 준다.
+5. Subject : 우리는 실시간으로 Observable에 값을 추가하고 Subscriber에게 방출하는 것이 필요하다. 이 때 Observable이자 Observer인 Subject 를 사용한다. 시간에 민감한 데이터를 모델링 할 때 사용한다 (subscribe 되기 이전의 값이 필요 없는 경우)
 * Behavior 는 초기값을 가지는 옵져버블을 만든다.
 <pre><code>
 import RxCocoa
