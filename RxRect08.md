@@ -171,7 +171,7 @@ class ViewController: UIViewController {
     }
 }
 </pre></code>
-<pre><code>
+``` swift
 let subject = PublishSubject<Int>()
 subject.onNext(0)
 
@@ -216,4 +216,4 @@ subject.onNext(9999)
  2) completed
  3) completed
 */
-</pre></code>
+```
