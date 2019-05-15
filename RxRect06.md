@@ -20,7 +20,7 @@ RxSwfit Recture
                     print("completed")
                 }
         }
-		.disposed(by : disposeBag)
+	.disposed(by : disposeBag)
     }
 </pre></code>
 * * *
