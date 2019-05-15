@@ -45,7 +45,8 @@ RxSwfit Recture
     }
 </pre></code>
 * * *
-4. subsribe, Do : 외부 변수(self 등)가 접근 하는 부분은 subscribe, do에 사용해야한다.
+4. do : side Effect를 일으키기위한 subscribe의 파생 함수
+* side Effect : 실행 중에 어떤 객체를 접근해서 변화가 일어나는 행위(라이브러리 I/O, 객체 변경 등)입니다. 아래 self로 접근하는 Do에서 처리하도록 한다.
 <pre><code>
     @IBAction func exMap3() {
         Observable.just("")
