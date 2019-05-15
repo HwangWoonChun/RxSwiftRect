@@ -14,6 +14,7 @@ RxSwiftRect Recture
     * ConcurrencyQueue : 스레드 작업을 동시실행(global, main)
     * SerialQueue : 스레드 작업을 순서대로 실행
 <pre><code>
+``` swift
    //동기
     @IBAction func onLoadSync(_ sender: Any) {
         
@@ -36,6 +37,7 @@ RxSwiftRect Recture
             }
         }
     }
+    ```
 </pre></code>
 * * *
 4. 다른 비동기 API는 없나? : PromiseKit, Bolts 등이 있지만, RXSwift의 코드가 훨씬 간결하며 다양한 기능을 Operator에서 제공하고 있다.
