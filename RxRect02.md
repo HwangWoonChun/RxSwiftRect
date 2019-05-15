@@ -4,7 +4,7 @@ RxSwfit Recture
 2강 Observable
 ===========
 1. Observable : 하나의 일련의 사건을 말한다. 
-* 기본 흐름 : 데이터를 배출할떄 마다 전달받고(onNext), 옵저버와 연결되어(subscribe) 결과를 받는다.
+        * 기본 흐름 : 데이터를 배출할떄 마다 전달받고(onNext), 옵저버와 연결되어(subscribe) 결과를 받는다.
 
 <pre><code>
 @IBAction func onLoadImage(_ sender: Any) {
