@@ -4,7 +4,7 @@ RxSwfit Recture
 8강 RXCococa
 ===========
 1. 텍스트필드 데이터의 유무에 따라 변화하는 화면 구성
-<pre><code>
+``` swift
 
 class ViewController: UIViewController {
     var disposeBag = DisposeBag()
@@ -37,19 +37,19 @@ class ViewController: UIViewController {
         return password.count > 5
     }
 }
-</pre></code>
+```
 * * *
 2. 텍스트 데이터 받기
-<pre><code>
+``` swift
     private func bindUI() {
         idField.rx.text.subscribe(onNext:{ s in
             print(s)
         }).disposed(by: disposeBag)
     }
-</pre></code>
+```
 * * *
 3. map을 통한 텍스트 데이터의 Valid Check
-<pre><code>
+``` swift
     private func bindUI() {
         idField.rx.text
             .filter {$0 != nil}
@@ -68,10 +68,10 @@ class ViewController: UIViewController {
         }).disposed(by: disposeBag)
 
     }
-</pre></code>
+```
 * * *
 4. combineLastest : 텍스트 부분 둘을 결합, 둘중 하나라도 데이터 들어오면 결합
-<pre><code>
+``` swift
     private func bindUI() {
     
         let idInputOb : Observable<String> = idField.rx.text.orEmpty.asObservable()
@@ -96,11 +96,11 @@ class ViewController: UIViewController {
 
 
     }
-</pre></code>
+```
 * * *
 5. Subject : 우리는 실시간으로 Observable에 값을 추가하고 Subscriber에게 방출하는 것이 필요하다. 이 때 Observable이자 Observer인 Subject 를 사용한다. 시간에 민감한 데이터를 모델링 할 때 사용한다 (subscribe 되기 이전의 값이 필요 없는 경우)
 * Behavior 는 초기값을 가지는 옵져버블을 만든다.
-<pre><code>
+``` swift
 import RxCocoa
 import RxSwift
 import UIKit
