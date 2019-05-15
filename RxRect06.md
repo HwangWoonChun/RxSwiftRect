@@ -53,3 +53,42 @@ RxSwfit Recture
     //Sequence contains more than one element.
 </pre></code>
 * * *
+4. Subscribe 의 이벤트들은 모두 옵셔널이기 때문에 사용 할 것만 사용 해줘도 무관하다.
+<pre><code>
+//1. onNext만 사용
+        Observable.just("Hello World")
+            .subscribe(onNext : { s in
+                print(s)
+            })
+            .disposed(by : disposeBag)
+</pre></code>
+<pre><code>
+//2. Dispose 이벤트 사용
+        Observable.just("Hello World")
+            .subscribe(onNext : { s in
+                print(s)
+            }, onError : { error in
+                print(error)
+            }, onDisposed : {
+                //취소한 경우, 에러, 성공한 경우 이곳을 탄다.
+            })
+            .disposed(by : disposeBag)
+</pre></code>
+<pre><code>
+//3. onNext를 외부에서 전달
+{ s in print(s)} 형태의 함수를 매개변수로 받는데, 자주 쓰는 함수를 사용하게 된다면 아래와 같이 사용 할 수 있다.
+    func output(_ s:Any)->Void{
+        print(s)
+    }
+
+    @IBAction func exJust1() {
+        Observable.just("Hello World")
+            .subscribe(onNext : output, onError : { error in
+                print(error)
+            }, onDisposed : {
+                //취소한 경우, 에러, 성공한 경우 이곳을 탄다.
+            })
+            .disposed(by : disposeBag)
+    }
+</pre></code>
+* * *
