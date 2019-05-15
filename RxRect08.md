@@ -111,6 +111,7 @@ class ViewController: UIViewController {
     let pwValid : BehaviorSubject<Bool> = BehaviorSubject(value: false)
     let idInputText : BehaviorSubject<String> = BehaviorSubject(value : "")
     let pwInputText : BehaviorSubject<String> = BehaviorSubject(value : "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindUI()
