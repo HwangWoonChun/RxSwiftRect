@@ -23,7 +23,7 @@ RxSwiftRect Recture
         let image = loadImage(from: IMAGE_URL)
         imageView.image = image
     }
-	//비동기
+    //비동기
     private func loadImage(from imageUrl: String) {
         DispatchQueue.global().async {
             guard let url = URL(string: imageUrl) else { return }
@@ -36,7 +36,7 @@ RxSwiftRect Recture
             }
         }
     }
-``` c
+```
 </pre></code>
 * * *
 4. 다른 비동기 API는 없나? : PromiseKit, Bolts 등이 있지만, RXSwift의 코드가 훨씬 간결하며 다양한 기능을 Operator에서 제공하고 있다.
