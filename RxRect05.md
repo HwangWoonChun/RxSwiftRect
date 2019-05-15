@@ -1,7 +1,7 @@
 # RxSwfitRect
 RxSwfit Recture
 
-6강 Marble Diagram
+5강 Marble Diagram
 ===========
 1. 구슬 : 데이터
 2. ->  : Observable의 타임라인
