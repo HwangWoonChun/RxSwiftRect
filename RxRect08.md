@@ -171,3 +171,49 @@ class ViewController: UIViewController {
     }
 }
 </pre></code>
+<pre><code>
+let subject = PublishSubject<Int>()
+subject.onNext(0)
+
+let subscriptionOne = subject
+    .subscribe(onNext: { num in
+        print(num)
+    })
+subject.on(.next(1))
+subject.onNext(2)
+
+let subscriptionTwo = subject
+    .subscribe({ event in
+        print("2)", event.element ?? event)
+    })
+
+subject.onNext(3)
+
+subscriptionOne.dispose()
+
+subject.onNext(4)
+subject.onCompleted()
+subject.onNext(5)
+
+subscriptionTwo.dispose()
+
+let disposeBag = DisposeBag()
+
+subject
+    .subscribe {
+        print("3)", $0.element ?? $0)
+    }
+    .disposed(by: disposeBag)
+
+subject.onNext(9999)
+
+/* Prints:
+ 1
+ 2
+ 3
+ 2) 3
+ 2) 4
+ 2) completed
+ 3) completed
+*/
+</pre></code>
