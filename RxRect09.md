@@ -6,7 +6,6 @@ RxSwfit Recture
 1. driver : RxCocoa에서 제공하는 메인스레드 스케쥴러 작업
 <pre><code>
 //1. ObserveOn
-</pre></code>
 let idEvent = idTextField.rx.text.orEmpty.asObservable()
     .observeOn(MainScheduler.instance)
     .share(replay: 1, scope: .whileConnected)
@@ -21,7 +20,7 @@ buttonEnableEvent
     .observeOn(MainScheduler.instance)
     .subscribe(onNext: { button.isEnabled = $0 })
     .disposed(by: disposeBag)
-
+</pre></code>
 <pre><code>
 //2. driver
 let idEvent = idTextField.rx.text.orEmpty.asDriver()
