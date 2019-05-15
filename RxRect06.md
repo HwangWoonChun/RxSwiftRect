@@ -76,8 +76,9 @@ RxSwfit Recture
 </pre></code>
 <pre><code>
 //3. onNext 함수를 직접 정의 해보기
-{ s in print(s)} 형태의 함수를 매개변수로 받는데, 자주 쓰는 함수를 사용하게 된다면 아래와 같이 사용 할 수 있다.
-    func output(_ s:Any)->Void{
+//{ s in print(s)} 형태의 함수를 매개변수로 받는데, 자주 쓰는 함수를 사용하게 된다면 아래와 같이 사용 할 수 있다.
+  
+   func output(_ s:Any)->Void{
         print(s)
     }
 
