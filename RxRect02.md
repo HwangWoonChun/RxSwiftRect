@@ -8,7 +8,7 @@ RxSwfit Recture
   
 2. 생명주기
 
-    * Marvel을 통한 이해
+    * Marvel을 통한 이해 : next 이벤트를 통해 계속 데이터 방출할 수 있으며, error, complete를 통해 완전 종료 될 수 있다.
     
       <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
   
