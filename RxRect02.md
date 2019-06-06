@@ -8,8 +8,6 @@ Observable<T> 는 T형태의 데이터를 전달 할 수 있는 일련의 이벤
 
 ## B. 생명주기
 
-1. 이벤트 : next 이벤트를 통해 계속 데이터 방출할 수 있으며, error, complete를 통해 완전 종료 될 수 있다.
-<pre><code>
 ``` swift
 public enum Event<Element> {
      /// element 인스턴스를 가진다.
@@ -20,7 +18,9 @@ public enum Event<Element> {
      case completed
 }
 ```
-</pre></code>
+
+1. 이벤트 : next 이벤트를 통해 계속 데이터 방출할 수 있으며, error, complete를 통해 완전 종료 될 수 있다.
+
      1) next 이벤트를 통해 각각의 요소들을 방출<p>
      <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
      
