@@ -77,10 +77,14 @@ class ViewController: UIViewController {
 
 3. Observarble 구독 : subscribe 함수를 이용하여 이벤트를 받는다. 
 
-     * subscribe() : escaping 클로져로 이벤트의 데이터 타입을 가진다. escaping에 대한 리턴 값은 없으며, 함수 리턴 타입은 Disaposable 이다.
+     * subcribe() : escaping 클로져로 이벤트의 데이터 타입을 가진다. escaping에 대한 리턴 값은 없으며, 함수 리턴 타입은 Disaposable 이다.
+     
+     * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
 
-
-     ``` swift
+``` swift
+/*** 
+     subscribe()
+***/
 import UIKit
 import RxSwift
 
@@ -110,10 +114,12 @@ class ViewController: UIViewController {
         }
     }
 }
-     ```
-     * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
-
+```
+     
  ``` swift
+/*** 
+     subscribe(onNext : )
+***/
 import UIKit
 import RxSwift
 
