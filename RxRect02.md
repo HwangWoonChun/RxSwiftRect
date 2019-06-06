@@ -7,6 +7,8 @@ RxSwfit Recture
 * * *
   
 2. 생명주기
+
+  * Marvel을 통한 이해
   <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
   
     next 이벤트를 통해 각각의 요소들을 방출 
