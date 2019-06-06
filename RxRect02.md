@@ -32,13 +32,23 @@ public enum Event<Element> {
 
 
 
-2. Observarble 생성
+2. Observable 생성 : Observable은 반드시 타입을 가진다.
 
      * Just : 특정 아이템 하나를 가지는 Observable을 생성
      
      * of : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출
      
      * From   : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출 / 배열만 가능
+     
+     * Create : 개발자가 입맛대로 Observable 개발
+     
+     * empty : element를 가지지 않고 completed 이벤트만 방출, 즉시 종료 할 수 있는 Observable을 리턴하고 싶을 때 사용
+     
+     * never : element를 가지지 않고 어떠한 이벤트도 방출 하지 않는다.
+     
+     * throw : element를 가지지 않고 어떠한 에러 이벤트만 방출 한다.
+     
+     * range : start로 부터, count 만큼의 크기의 데이터를 가지는 Observable을 만든다. 
      
 ``` swift
 
@@ -150,3 +160,9 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+4. Disposing과 종료 : subscribe가 Observable이 이벤트를 방출 해준다면, disposing은 수동적으로 subscribe를 취소하는 것 이다.
+
+     * disposing()
+     
+     * disposeBag(by : ) : 구독에 대해서 일
