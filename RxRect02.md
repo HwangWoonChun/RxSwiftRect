@@ -35,9 +35,9 @@ public enum Event<Element> {
 
      * Just : 특정 아이템 하나를 가지는 Observable을 생성
      
-     * From : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출
+     * of : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출
      
-     * of   : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출 / 배열만 가능
+     * From   : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출 / 배열만 가능
      
 ``` swift
 
