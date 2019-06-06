@@ -102,6 +102,10 @@ class ViewController: UIViewController {
             observable.subscribe({(event) in
                 print(event)
             })
+            /* 
+               next([a, a, a])
+               completed
+            */
         }
     }
 }
