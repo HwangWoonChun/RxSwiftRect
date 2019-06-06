@@ -111,7 +111,7 @@ class ViewController: UIViewController {
 }
 ```
  
- * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
+     * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
 
  ``` swift
 import UIKit
