@@ -10,7 +10,7 @@ RxSwiftRect Recture
 * Notification Center
 * Delegate
 * GCD
-- ConcurrencyQueue(Global, Main)
+  - ConcurrencyQueue(Global, Main)
 * Closure
 * NSThread
 * OperationQueue
