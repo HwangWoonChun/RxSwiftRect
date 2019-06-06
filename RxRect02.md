@@ -80,7 +80,7 @@ class ViewController: UIViewController {
      * subscribe() : escaping 클로져로 이벤트의 데이터 타입을 가진다. escaping에 대한 리턴 값은 없으며, 함수 리턴 타입은 Disaposable 이다.
 
 
- ``` swift
+     ``` swift
 import UIKit
 import RxSwift
 
@@ -110,8 +110,8 @@ class ViewController: UIViewController {
         }
     }
 }
-```
-
+     ```
+     * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
 
  ``` swift
 import UIKit
@@ -138,7 +138,6 @@ class ViewController: UIViewController {
             })
             /* 
                ["a", "a", "a"]
-               completed
             */
 
         }
