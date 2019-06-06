@@ -21,11 +21,51 @@ public enum Event<Element> {
 
 1. 이벤트 : next 이벤트를 통해 계속 데이터 방출할 수 있으며, error, complete를 통해 완전 종료 될 수 있다.
 
-     1) next 이벤트를 통해 각각의 요소들을 방출<p>
+     * next 이벤트를 통해 각각의 요소들을 방출<p>
      <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
      
-     2) tap 이벤트를 방출한뒤 완전종료(completed)<p> 
+     * tap 이벤트를 방출한뒤 완전종료(completed)<p> 
      <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/2.%20lifecycle1.png?raw=true" height = 50>
     
-     3) 1,2 이벤트를 방출한뒤 에러 이벤트 후 완전종료(error)<p> 
+     * 1,2 이벤트를 방출한뒤 에러 이벤트 후 완전종료(error)<p> 
     <img src = "https://github.com/fimuxd/RxSwift/raw/master/Lectures/02_Observables/3.%20lifecycle2.png?raw=true" height = 50>
+
+
+2. Observarble 생성
+
+* Just :
+* From : 
+* of   :
+``` swift
+
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+
+    public func example(of description: String,
+                        action: () -> Void) {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        example(of : "just, of, from"){
+            let one = 1
+            let two = 2
+            let three = 3
+            
+            let observable : Observable<Int> = Observable<Int>.just(one)
+            //just 메소드를 통해 Int 타입의 Observable sequence를 만듬, 오직 하나의 요소를 포함하는 Observable sequence 생성
+            
+            let observable2 = Observable.of(one, two, three)
+            let observable3 = Observable.of([one, two, three]) //just와 동일한 효과
+            //of 연산자는 주어진 값들을 통해 타입추론으로 Observable sequence를 생성
+            //어떤 배열을 observable array로 만들고 싶다면 사용
+            
+            let observable4 = Observable.from([one, two, three])
+            //from은 일반적인 array 각각 요소들을 하나씩 방출 오직 array만 취한다.
+            
+        }
+    }
+}
+```
