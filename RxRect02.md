@@ -51,7 +51,9 @@ public enum Event<Element> {
      * range : start로 부터, count 만큼의 크기의 데이터를 가지는 Observable을 만든다. 
      
 ``` swift
-
+/*** 
+     Just, Of, From
+***/
 import UIKit
 import RxSwift
 
@@ -83,8 +85,54 @@ class ViewController: UIViewController {
     }
 }
 ```
+``` swift
+/*** 
+     Create
+***/
+import UIKit
+import RxSwift
 
+enum MyError : Error{
+    case anError
+}
 
+class ViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
+    
+    public func example(of description: String,
+                        action: () -> Void) {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "create"){
+            
+            Observable<String>.create({ (observable) -> Disposable in
+                
+                observable.onNext("1")
+                observable.onError(MyError.anError)
+                observable.onCompleted()
+                observable.onNext("?")
+                return Disposables.create()
+                
+            }).subscribe(
+                onNext:{print($0)},
+                onError:{print($0)},
+                onCompleted:{print("completed")},
+                onDisposed:{print("disposed")}
+            ).disposed(by: disposeBag)
+        }
+        /*
+               1
+               anError
+               disposed
+         */
+        
+    }
+}
+```
 3. Observarble 구독 : subscribe 함수를 이용하여 이벤트를 받는다. 
 
      * subcribe() : escaping 클로져로 이벤트의 데이터 타입을 가진다. escaping에 대한 리턴 값은 없으며, 함수 리턴 타입은 Disaposable 이다.
