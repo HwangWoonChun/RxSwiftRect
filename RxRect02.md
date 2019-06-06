@@ -19,6 +19,7 @@ tap 이벤트를 방출한뒤 완전종료(completed)
 <img src = "https://github.com/fimuxd/RxSwift/raw/master/Lectures/02_Observables/3.%20lifecycle2.png?raw=true" height = 50>
 1,2 이벤트를 방출한뒤 에러 이벤트 후 완전종료(error)
           
+          
 * Event 타입
     ``` swift
      public enum Event<Element> {
