@@ -163,6 +163,67 @@ class ViewController: UIViewController {
 
 4. Disposing과 종료 : subscribe가 Observable이 이벤트를 방출 해준다면, disposing은 수동적으로 subscribe를 취소하는 것 이다.
 
-     * disposing()
+     * disposing() : 구독을 취소
      
-     * disposeBag(by : ) : 구독에 대해서 일
+     * disposeBag(by : ) : 구독에 대해서 일일이 취소 하지 않고 Bag 에 담아 한번에 취소
+     
+ ``` swift
+/*** 
+     disposing
+***/     
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+
+    public func example(of description: String,
+                        action: () -> Void) {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "range"){
+            let observable = Observable.of("A","B")
+            let subscribtion = observable.subscribe({ (event) in
+                print(event)
+            })
+            subscribtion.dispose()
+        }
+    }
+}
+
+```
+
+ ``` swift
+/*** 
+     disposeBag
+***/    
+import UIKit
+import RxSwift
+import RxCocoa
+
+class ViewController: UIViewController {
+
+    let dispseBag = DisposeBag()
+    
+    public func example(of description: String,
+                        action: () -> Void) {
+        print("\n--- Example of:", description, "---")
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "range"){
+            let observable = Observable.of("A","B")
+            let subscribtion = observable.subscribe({ (event) in
+                print(event)
+            })
+            .disposed(by: dispseBag)
+        }
+    }
+}
+```
+     
+     
