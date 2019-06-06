@@ -8,16 +8,16 @@ RxSwfit Recture
   
 2. 생명주기
 
-  * Marvel을 통한 이해
-  <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
+    * Marvel을 통한 이해
+      <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
   
     next 이벤트를 통해 각각의 요소들을 방출 
 
-  <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/2.%20lifecycle1.png?raw=true" height = 50>
+      <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/2.%20lifecycle1.png?raw=true" height = 50>
   
      tap 이벤트를 방출한뒤 완전종료(completed)
 
-  <img src = "https://github.com/fimuxd/RxSwift/raw/master/Lectures/02_Observables/3.%20lifecycle2.png?raw=true" height = 50>
+      <img src = "https://github.com/fimuxd/RxSwift/raw/master/Lectures/02_Observables/3.%20lifecycle2.png?raw=true" height = 50>
   
      1,2 이벤트를 방출한뒤 에러 이벤트 후 완전종료(error)
   
