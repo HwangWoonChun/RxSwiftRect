@@ -20,6 +20,7 @@ tap 이벤트를 방출한뒤 완전종료(completed)
 1,2 이벤트를 방출한뒤 에러 이벤트 후 완전종료(error)<p> 
 * * *          
 2. Event 타입
+     
 ``` swift
 public enum Event<Element> {
      /// element 인스턴스를 가진다.
