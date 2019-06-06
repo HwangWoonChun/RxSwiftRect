@@ -33,9 +33,12 @@ public enum Event<Element> {
 
 2. Observarble 생성
 
-* Just : 특정 아이템 하나를 가지는 Observable을 생성
-* From : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출
-* of   : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출 / 배열만 가능
+     * Just : 특정 아이템 하나를 가지는 Observable을 생성
+     
+     * From : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출
+     
+     * of   : 다양한 데이터, 객체를 가지는 Observable을 생성 / 하나씩 데이터 추출 / 배열만 가능
+     
 ``` swift
 
 import UIKit
@@ -54,16 +57,16 @@ class ViewController: UIViewController {
             let two = 2
             let three = 3
             
+            //Just
             let observable : Observable<Int> = Observable<Int>.just(one)
-            //just 메소드를 통해 Int 타입의 Observable sequence를 만듬, 오직 하나의 요소를 포함하는 Observable sequence 생성
             
+            //Of
             let observable2 = Observable.of(one, two, three)
             let observable3 = Observable.of([one, two, three]) //just와 동일한 효과
-            //of 연산자는 주어진 값들을 통해 타입추론으로 Observable sequence를 생성
-            //어떤 배열을 observable array로 만들고 싶다면 사용
-            
+
+            //From
             let observable4 = Observable.from([one, two, three])
-            //from은 일반적인 array 각각 요소들을 하나씩 방출 오직 array만 취한다.
+
             
         }
     }
