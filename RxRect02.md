@@ -103,12 +103,45 @@ class ViewController: UIViewController {
                 print(event)
             })
             /* 
-               next([a, a, a])
+               next(["a", "a", "a"])
                completed
             */
         }
     }
 }
 ```
-     
-     
+ 
+ * subscribe(onNext:) : next 이벤트만을 argument로 취한뒤 데이터만 핸들링 가능
+
+ ``` swift
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+    
+    public func example(of description: String,
+                        action: () -> Void) {
+        print("\n--- Example of:", description, "---")
+        action()
+    }
+    
+    override func viewDidLoad() {
+        example(of : "just, of, from"){
+            let one = 1
+            let two = 2
+            let three = 3
+            
+            let observable : Observable<Array> = Observable<Array>.just(["a","a","a"])
+
+            observable.subscribe(onNext : {(element) in
+                print(element)
+            })
+            /* 
+               ["a", "a", "a"]
+               completed
+            */
+
+        }
+    }
+}
+```
