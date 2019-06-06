@@ -31,6 +31,7 @@ public enum Event<Element> {
     <img src = "https://github.com/fimuxd/RxSwift/raw/master/Lectures/02_Observables/3.%20lifecycle2.png?raw=true" height = 50>
 
 
+
 2. Observarble 생성
 
      * Just : 특정 아이템 하나를 가지는 Observable을 생성
@@ -72,3 +73,38 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+
+3. Observarble 구독 : subscribe 함수를 이용하여 이벤트를 받는다. 
+
+     * subscribe() : escaping 클로져로 이벤트의 데이터 타입을 가진다. escaping에 대한 리턴 값은 없으며, 함수 리턴 타입은 Disaposable 이다.
+ 
+ ``` swift
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+    
+    public func example(of description: String,
+                        action: () -> Void) {
+        print("\n--- Example of:", description, "---")
+        action()
+    }
+    
+    override func viewDidLoad() {
+        example(of : "just, of, from"){
+            let one = 1
+            let two = 2
+            let three = 3
+            
+            let observable : Observable<Array> = Observable<Array>.just(["a","a","a"])
+
+            observable.subscribe({(event) in
+                print(event)
+            })
+        }
+    }
+}
+```
+     
+     
