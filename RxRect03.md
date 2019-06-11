@@ -9,6 +9,8 @@ Observerable이면서 Observer인 녀석이 subject 이다.
 
 ## B. Subject의 종류
 1. publish Subject : 빈 상태로 시작 새로운 값만 subscriber에 방출 / 시간에 민감한 데이터를 모델링 시 사용(경매 앱)
+* subscriber 가 dispose된 경우 새로운 subsciber에 이벤트 방출
+* subject가 completed, error이벤트 같이 완전종료 이벤트를 받으면 더 이상 next 이벤트 호출 하지 않음
 
 <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/1.%20publishsubject.png?raw=truehttps://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 100>
 
@@ -21,8 +23,7 @@ Observerable이면서 Observer인 녀석이 subject 이다.
 import UIKit
 import RxSwift
 
-//1. subscriber 가 dispose된 경우 새로운 subsciber에 이벤트 방출
-//2. subject가 completed, error이벤트 같이 완전종료 이벤트를 받으면 더 이상 next 이벤트 호출 하지 않음
+
 class ViewController: UIViewController {
 
     public func example(of description: String,
