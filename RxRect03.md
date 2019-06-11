@@ -96,4 +96,177 @@ class ViewController: UIViewController {
     <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/2.%20behaviorsubject.png?raw=true?raw=true" height = 100>
 
 ``` swift
+import UIKit
+import RxSwift
+
+
+
+class ViewController: UIViewController {
+
+    public func example(of description: String,
+                        action: () -> Void)
+    {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "BehaviorSubject") {
+            
+            let subject = BehaviorSubject<String>(value: "Is anyone listening?")
+
+            let subcriptionOne = subject.subscribe(onNext : {(string) in
+                print("subjectOne :  \(string)")
+            })
+            
+            subject.onNext("1")
+            subject.on(.next("2"))
+            
+            let subcriptionTwo = subject.subscribe(onNext : {(string) in
+                print("subjectTwo :  \(string)")
+            })
+
+            subject.onNext("3")
+
+            subcriptionOne.dispose()
+            
+            subject.onNext("4")
+
+            subject.onCompleted()
+            
+            subject.onNext("5")
+            
+            subcriptionTwo.dispose()
+            
+            let disposeBag = DisposeBag()
+            
+            subject.subscribe{
+                print("new Subject : \($0)")
+            }.disposed(by: disposeBag)
+
+            subject.onNext("?")
+            
+            /*
+            subjectOne :  Is anyone listening?
+            subjectOne :  1
+            subjectOne :  2
+            subjectTwo :  2
+            subjectOne :  3
+            subjectTwo :  3
+            subjectTwo :  4
+            new Subject : completed
+            */
+        }
+        
+    }
+}
+```
+3. Replay Subject : 버퍼를 두고 초기화, 버퍼 사이즈 만큼 값들을 유지하면서 새로운 subscriber에 방출 / 버퍼 사이즈를 넘겨 데이터를 방출하게 되면 최근 데이터만 노출하고 에러 방출 / 최근검색어(제한 몇개)에 사용가능
+
+    <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/2.%20behaviorsubject.png?raw=true?raw=true" height = 100>
+    
+``` swift
+import UIKit
+import RxSwift
+
+enum MyError : Error{
+    case anError
+}
+
+class ViewController: UIViewController {
+
+    public func example(of description: String,
+                        action: () -> Void)
+    {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "ReplaySubject") {
+        
+            let subject = ReplaySubject<String>.create(bufferSize: 2)
+            let disposeBag = DisposeBag()
+            
+            subject.onNext("1")
+            subject.onNext("2")
+            subject.onNext("3")
+            
+            subject.subscribe{
+                print("subject1 : \($0)")
+            }.disposed(by: disposeBag)
+            
+            subject.onError(MyError.anError)
+            
+            subject.subscribe{
+                print("subject2 : \($0)")
+                }.disposed(by: disposeBag)
+            
+            /*
+             subject1 : next(2)
+             subject1 : next(3)
+             subject1 : error(anError)
+             subject2 : next(2)
+             subject2 : next(3)
+             subject2 : error(anError)
+             */
+            
+        }
+    }
+}
+```
+
+4. Variable : Behavior subject를 래핑하고 최신 값만 subscriber에 방출
+
+   * 현재의 값을 상태로 보유 한다.
+   * value를 가지기 위해서는 일반적인 observable, subject 와는 다른 방법으로 추가
+   * next, completed, error 추가 불가
+   * 에러가 발생하지 않을 것임을 보증 / variable 할당해제 시 자동 완료
+
+
+```swift
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+
+    public func example(of description: String,
+                        action: () -> Void)
+    {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "Variable") {
+            
+            let variable = Variable("Initial Value")
+            let disposeBag = DisposeBag()
+            
+            variable.value = "New Initial Value"
+            
+            variable.asObservable().subscribe{
+                print("variable 1 : \($0)")
+            }.disposed(by: disposeBag)
+            
+            variable.value = "1"
+            
+            
+            variable.asObservable().subscribe{
+                print("variable 2 : \($0)")
+            }.disposed(by: disposeBag)
+            
+            variable.value = "2"
+            
+            /*
+             variable 1 : next(New Initial Value)
+             variable 1 : next(1)
+             variable 2 : next(1)
+             variable 1 : next(2)
+             variable 2 : next(2)
+             */
+            
+        }
+    }
+}
 ```
