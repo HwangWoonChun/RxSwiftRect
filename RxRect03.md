@@ -92,6 +92,7 @@ class ViewController: UIViewController {
 ```
 
 2. behavior Subject : 초기값을 가지고 시작, 새로운 값 또는 초기기값을 subscriber에 방출 / 프로필 화면 앱이 새로운 데이터를 가져오는 동안 미리 채워 넣을 수 있다.
+
     <img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/2.%20behaviorsubject.png?raw=true?raw=true" height = 100>
 
 ``` swift
