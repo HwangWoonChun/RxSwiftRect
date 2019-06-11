@@ -10,7 +10,7 @@ Observerable이면서 Observer인 녀석이 subject 이다.
 ## B. Subject의 종류
 1. publish Subject : 빈 상태로 시작 새로운 값만 subscriber에 방출
 
-<img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/1.%20publishsubject.png?raw=truehttps://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 50>
+<img src = "https://github.com/fimuxd/RxSwift/blob/master/Lectures/03_Subjects/1.%20publishsubject.png?raw=truehttps://github.com/fimuxd/RxSwift/blob/master/Lectures/02_Observables/1.%20marble.png?raw=true" height = 100>
 
 * 첫번쨰 줄 : 배포
 * 두번째 줄, 세번쨰 줄 : subscriber
