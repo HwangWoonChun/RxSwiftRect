@@ -257,6 +257,39 @@ class ViewController: UIViewController {
 ## C. Taking Operator
 1. .take(n) : 처음 부터 n 까지 데이터 허용
 ``` swift
+import UIKit
+import RxSwift
+
+class ViewController: UIViewController {
+    
+    public func example(of description: String,
+                        action: () -> Void)
+    {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "take") {
+            
+            let disposeBag = DisposeBag()
+            
+            Observable.of(1,2,3,4,5,6)
+            .take(3)
+                .subscribe(onNext :{
+                    print($0)
+                })
+            .disposed(by: disposeBag)
+        }
+        
+        /*
+         1
+         2
+         3
+         */
+        
+    }
+}
 ```
 2. .takeWhile(조건) : 조건이 참인 경우 데이터 허용
 
