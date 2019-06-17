@@ -349,7 +349,7 @@ class ViewController: UIViewController {
     }
 }
 ```
-1. dematerialize
+2. dematerialize
     * materialize는 event를 받지만 element를 받을 수 없다 그렇기 때문에 dematerialize를 통해 기존의 모양으로 돌려주는 역할 을 한다.
 ``` swift
 import UIKit
