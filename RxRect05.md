@@ -1,32 +1,40 @@
 # RxSwfitRect
 RxSwfit Recture
 
-5강 Marble Diagram
+4강 Transforming Operator
 ===========
-1. 구슬 : 데이터
-2. ->  : Observable의 타임라인
-3. ⇣   : 데이터 emit(배출)
-4. |   : Completed
-5. x   : Error
-![Alt text](http://reactivex.io/assets/operators/legend.png)
-* * *
-1. Just : 데이터가 그대로 넘어온다.
-![Alt text](http://reactivex.io/documentation/operators/images/just.c.png)
-* * *
-2. Map : 데이터가 변형되어 넘어온다.
-![Alt text](http://reactivex.io/documentation/operators/images/map.c.png)
-* * *
-3. Filter : 조거문의 참에 해당되는 데이터만 넘어온다.
-![Alt text](http://reactivex.io/documentation/operators/images/filter.c.png)
-* * *
-4. First : 첫번째 데이터가 넘어온다.
-![Alt text](http://reactivex.io/documentation/operators/images/first.c.png)
-* * *
-5. Single : First에서 파생된 함수, 단 하나의 데이터만 만족한다.
-![Alt text](http://reactivex.io/documentation/operators/images/single.png)
-* * *
-6. Flatmap : 데이터가 변형되어 넘어오는데, 그 데이터는 Observable 형태이다.
-![Alt text](http://reactivex.io/documentation/operators/images/flatMap.c.png)
-* * *
-7. Concat : 두개이상의 Observable을 결합하여 새로운 Observable 생성한다. 결과값은 하나의 Observable 완료 다음 Observable
-![Alt text](http://reactivex.io/documentation/operators/images/concat.png)
+## A. 시작하기
+
+1. swift의 map, flatMap
+map 은 배열이외에도 연산(함수를) 사상 할 수 있는 기능 이에 비해 flatMap 은 각 원소를 unwrapp 하고 하나의 배열로 만드는 기능
+
+``` swift
+        let words = ["123", "456.7", "eighty nine", "10", "100"]
+        
+        let numbers = words.map{ Int($0) }
+        /*
+         [Optional(123), nil, nil, Optional(10), Optional(100)]
+         */
+        let numbersWithMap = words.map{ Int($0) }.filter{ $0 != nil }.map{ $0! }
+        /*
+         [123, 10, 100]
+         */
+        let numbersFlatMap = words.flatMap{ Int($0) }
+        /*
+         [123, 10, 100]
+         */
+```
+
+## B. 변환연산자의 요소들
+1. toArray
+    * 독립적인 요소들을 배열로 넣는 가장 간단한 방법
+2. map
+    * 각각의 요소들을 연산에 사상할 수 있는 방법
+3. enumerated
+    * Map with enumerated
+
+## C. 내부의 Observable 변환하기
+1. flatMap
+2. flatMapLatest
+
+## D. 이벤트 관찰하기
