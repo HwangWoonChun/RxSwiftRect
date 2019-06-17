@@ -10,10 +10,10 @@ RxSwiftRect Recture
 [3강 Disposable, DisposeBag](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect03.md)
 ===========
 * * *
-[4강 기본 Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect04.md)
+[4강 Filtering Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect04.md)
 ===========
 * * *
-[5강 Marble Diagram](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect05.md)
+[5강 Transforming Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect05.md)
 ===========
 * * *
 [6강 Next, Error, Complete](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect06.md)
