@@ -152,7 +152,38 @@ class ViewController: UIViewController {
 1. flatMap
     * Observable에서 발행한 아이템을 다른 Observable 로 만듬
     <img src = "https://farm8.staticflickr.com/7567/26230104214_635e66ac0b_z.jpg" height = 150 width = 300>
-    
+
+``` swift
+        let sequenceInt = Observable.of(1, 2, 3)	// Int 타입 시퀀스
+        let sequenceString = Observable.of("A", "B", "C", "D")	// String 타입 시퀀스
+
+        sequenceInt
+	        .flatMap { (x: Int) -> Observable<String> in
+		        print("Emit Int Item : \(x)")
+		        return sequenceString
+	        }
+	        .subscribeNext {
+		        print("Emit String Item : \($0)")
+                }
+
+// Output
+Emit Int Item : 1
+Emit String Item : A
+Emit String Item : B
+Emit String Item : C
+Emit String Item : D
+Emit Int Item : 2
+Emit String Item : A
+Emit String Item : B
+Emit String Item : C
+Emit String Item : D
+Emit Int Item : 3
+Emit String Item : A
+Emit String Item : B
+Emit String Item : C
+Emit String Item : D
+```
+
 ``` swift
 import UIKit
 import RxSwift
