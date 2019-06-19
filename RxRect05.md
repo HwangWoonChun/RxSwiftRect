@@ -150,7 +150,9 @@ class ViewController: UIViewController {
 
 ## C. 내부의 Observable 변환하기
 1. flatMap
-    * Observable의 Observable값을 투영하고 변환한 다음, target Observable로 만든다. 각각의 Observable의 변화를 지켜본다는 의미
+    * Observable에서 발행한 아이템을 다른 Observable 로 만듬
+    <img src = "https://farm8.staticflickr.com/7567/26230104214_635e66ac0b_z.jpg" height = 50>
+    
 ``` swift
 import UIKit
 import RxSwift
