@@ -151,7 +151,7 @@ class ViewController: UIViewController {
 ## C. 내부의 Observable 변환하기
 1. flatMap
     * Observable에서 발행한 아이템을 다른 Observable 로 만듬
-    <img src = "https://farm8.staticflickr.com/7567/26230104214_635e66ac0b_z.jpg" height = 50>
+    <img src = "https://farm8.staticflickr.com/7567/26230104214_635e66ac0b_z.jpg" height = 150 width = 200>
     
 ``` swift
 import UIKit
