@@ -154,34 +154,51 @@ class ViewController: UIViewController {
     <img src = "https://farm8.staticflickr.com/7567/26230104214_635e66ac0b_z.jpg" height = 150 width = 300>
 
 ``` swift
-        let sequenceInt = Observable.of(1, 2, 3)	// Int 타입 시퀀스
-        let sequenceString = Observable.of("A", "B", "C", "D")	// String 타입 시퀀스
+import UIKit
+import RxSwift
 
-        sequenceInt
-	        .flatMap { (x: Int) -> Observable<String> in
-		        print("Emit Int Item : \(x)")
-		        return sequenceString
-	        }
-	        .subscribeNext {
-		        print("Emit String Item : \($0)")
+class ViewController: UIViewController {
+    
+    public func example(of description: String,
+                        action: () -> Void)
+    {
+        action()
+    }
+    
+    override func viewDidLoad() {
+        
+        example(of: "concat") {
+            let sequenceInt = Observable.of(1, 2, 3)    // Int 타입 시퀀스
+            let sequenceString = Observable.of("A", "B", "C", "D")    // String 타입 시퀀스
+            
+            sequenceInt
+                .flatMap { (x: Int) -> Observable<String> in
+                    print("Emit Int Item : \(x)")
+                    return sequenceString
                 }
+                .subscribe(onNext: { print("Emit string Item : \($0)") })
+        }
+        /*
+         Emit Int Item : 1
+         Emit string Item : A
+         Emit Int Item : 2
+         Emit string Item : B
+         Emit string Item : A
+         Emit Int Item : 3
+         Emit string Item : C
+         Emit string Item : B
+         Emit string Item : A
+         Emit string Item : D
+         Emit string Item : C
+         Emit string Item : B
+         Emit string Item : D
+         Emit string Item : C
+         Emit string Item : D
+	 */
+        
+    }
+}
 
-// Output
-Emit Int Item : 1
-Emit String Item : A
-Emit String Item : B
-Emit String Item : C
-Emit String Item : D
-Emit Int Item : 2
-Emit String Item : A
-Emit String Item : B
-Emit String Item : C
-Emit String Item : D
-Emit Int Item : 3
-Emit String Item : A
-Emit String Item : B
-Emit String Item : C
-Emit String Item : D
 ```
 
 ``` swift
