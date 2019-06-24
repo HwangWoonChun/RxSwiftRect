@@ -9,7 +9,7 @@ RxSwfit Recture
 
 ## B. 앞에 붙이기 - append
 
-1. startWith(_:)
+_1. startWith(_:)_
 
 	* observer가 초기값을 받을 수 있도록 해줌
 
