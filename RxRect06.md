@@ -289,9 +289,122 @@ RxSwfit Recture
 ```
 ## F. Switches
 1. amb(_:)
-	* 
+	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 하나를 방출 하기 시작하면 나머지는 구독을 중단한다.  
 ``` swift
+        example(of: "amb") {
+            let left = PublishSubject<String>()
+            let right = PublishSubject<String>()
+            
+            // 1
+            let observable = left.amb(right)
+            let disposable = observable.subscribe(onNext: { value in
+                print(value)
+            })
+            
+            // 2
+            left.onNext("Lisbon")
+            right.onNext("Copenhagen")
+            left.onNext("London")
+            left.onNext("Madrid")
+            right.onNext("Vienna")
+            
+            disposable.dispose()
+            
+            /*
+             Lisbon
+             London
+             Madrid
+             */
+        }
+```
+2. switchLatest()
+	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 최신 값을 구독한다.
+``` swift
+	example(of: "switchLatest") {
+            // 1
+            let one = PublishSubject<String>()
+            let two = PublishSubject<String>()
+            let three = PublishSubject<String>()
+            
+            let source = PublishSubject<Observable<String>>()
+            
+            // 2
+            let observable = source.switchLatest()
+            let disposable = observable.subscribe(onNext: { print($0) })
+            
+            // 3
+            source.onNext(one)
+            one.onNext("Some text from sequence one")
+            two.onNext("Some text from sequence two")
+            
+            source.onNext(two)
+            two.onNext("More text from sequence two")
+            one.onNext("and also from sequence one")
+            
+            source.onNext(three)
+            two.onNext("Why don't you see me?")
+            one.onNext("I'm alone, help me")
+            three.onNext("Hey it's three. I win")
+            
+            source.onNext(one)
+            one.onNext("Nope. It's me, one!")
+            
+            disposable.dispose()
+            
+            /* Prints:
+             Some text from sequence one
+             More text from sequence two
+             Hey it's three. I win
+             Nope. It's me, one!
+             */
+        }
 ```
 ## G. Sequence 내 요소들 간의 결합
+1. reduce(::)
+	* 스위프트의 표준라이브러리인 reduce는 초기값을 정하고 배열을 조합하여 새로운 하나의 데이터를 생성하는 것이다.
+	* 초기값부터 시작하여 값이 방출 할때마다 그 값을 가공한다.
 ``` swift
+    override func viewDidLoad() {
+        example(of: "reduce") {
+            let source = Observable.of(1, 3, 5, 7, 9)
+            
+            // 1
+            let observable = source.reduce(0, accumulator: +)
+            observable.subscribe(onNext: { print($0) } )
+            
+            // 주석 1은 다음과 같은 의미다.
+            // 2
+            let observable2 = source.reduce(0, accumulator: { summary, newValue in
+                return summary + newValue
+            })
+            observable2.subscribe(onNext: { print($0) })
+            
+            /*
+             25
+             25
+             */
+            
+        }
+    }
 ```
+2. scan(_:accumulator)
+	* reduce와 동일 하게 동작하나 리턴 값이 Observable이다.
+	* accumlator의 과정을 모두 출력 할 수 있다.
+	``` swift
+	example(of: "scan") {
+            let source = Observable.of(1, 3, 5, 7, 9)
+            
+            let observable = source.scan(0, accumulator: +)
+            observable.subscribe(onNext: { print($0) })
+            
+            /* Prints:
+             1
+             4
+             9
+             16
+             25
+             */
+        }
+	```
+	
+	
