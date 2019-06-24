@@ -9,8 +9,8 @@ RxSwfit Recture
 
 ## B. 앞에 붙이기 - append
 
-**1. startWith(_:)**
-
+1. startWith(_:)
+	
 	* observer가 초기값을 받을 수 있도록 해줌
 
 	``` swift
@@ -33,7 +33,7 @@ RxSwfit Recture
         }
 	```
 
-**2. observable.concat(_:)**
+2. observable.concat(_:)
 	* 두개의 Sequence를 하나로 묶음
 	* 두 Observable의 요소들의 타입이 같아야 한다.
 
@@ -61,7 +61,7 @@ RxSwfit Recture
         }
 	```
 
-**3. concatMap(_:)**
+3. concatMap(_:)
 
 	* flatMap은 Observable에서 발행한 아이템을 다른 Observable 로 만드는 것이다.
 
@@ -95,7 +95,7 @@ RxSwfit Recture
 
 ## C. 합치기 - Combining
 
-**1. merge()**
+1. merge()
 
 	* 합치기 가장 쉬운방법
 	
@@ -141,12 +141,12 @@ RxSwfit Recture
          */
     }
 	```
-**2. merge(maxConcurrent:)**
+2. merge(maxConcurrent:)
 	* 합칠 수 있는 sequence의 수를 제한하기 위해 사용
 
 ## D. 요소 결합하기
 
-**1. combineLatest(::resultSelector:)**
+1. combineLatest(::resultSelector:)
 
 	* 결합된 Sequence들은 값을 방출 할때마다 제공한 클로저를 호출하며 각각 내부 Sequence들의 최종값을 받는다.
 	
@@ -209,7 +209,7 @@ RxSwfit Recture
 	}
 	```
 
-**3. zip**
+3. zip
 
 	* 일련의 Observable이 새 값을 각자 방출 할 때까지 기다리다가, 둘 중 하나의 Observable이라도 완료되면 zip이 완료 된다.
 
@@ -251,7 +251,7 @@ RxSwfit Recture
 
 * 여러개의 Observable을 한번에 받을 수 있는 방아쇠 역할을 해줌
 
-**1. withLatestFrom(_:)**
+1. withLatestFrom(_:)
 
 	* 새 이벤트 추가되기 전에 최신 값을 출력
 	``` swift
@@ -277,7 +277,7 @@ RxSwfit Recture
              */
         }
 	```
-**2. sample(_:)**
+2. sample(_:)
 	* 새 이벤트 추가되기 전에 최신 값을 한번만 출력
 	``` swift
         example(of: "withLatestFrom") {
@@ -304,7 +304,7 @@ RxSwfit Recture
 	```
 ## F. Switches
 
-**1. amb(_:)**
+1. amb(_:)
 
 	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 하나를 방출 하기 시작하면 나머지는 구독을 중단한다.  
 
@@ -335,7 +335,7 @@ RxSwfit Recture
              */
         }
 	```
-**2. switchLatest()**
+2. switchLatest()
 
 	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 최신 값을 구독한다.
 	``` swift
@@ -380,7 +380,7 @@ RxSwfit Recture
 	```
 ## G. Sequence 내 요소들 간의 결합
 
-**1. reduce(::)**
+1. reduce(::)
 
 	* 스위프트의 표준라이브러리인 reduce는 초기값을 정하고 배열을 조합하여 새로운 하나의 데이터를 생성하는 것이다.
 	* 초기값부터 시작하여 값이 방출 할때마다 그 값을 가공한다.
@@ -406,7 +406,7 @@ RxSwfit Recture
             
         }
 	```
-**2. scan(_:accumulator)**
+2. scan(_:accumulator)
 
 	* reduce와 동일 하게 동작하나 리턴 값이 Observable이다.
 	* accumlator의 과정을 모두 출력 할 수 있다.
