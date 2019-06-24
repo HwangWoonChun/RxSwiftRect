@@ -10,6 +10,7 @@ RxSwfit Recture
 ## B. 앞에 붙이기 - append
 
 1. startWith(_:)
+
 	* observer가 초기값을 받을 수 있도록 해줌
 
 	``` swift
@@ -61,7 +62,9 @@ RxSwfit Recture
 	```
 
 3. concatMap(_:)
+
 	* flatMap은 Observable에서 발행한 아이템을 다른 Observable 로 만드는 것이다.
+
 	* concatMap은 각각의 sequence가 다음 sequence가 구독되기전에 합쳐지는 것을 보증 하는 것이다.
 
 	``` swift
@@ -91,8 +94,11 @@ RxSwfit Recture
 	```
 
 ## C. 합치기 - Combining
+
 1. merge()
+
 	* 합치기 가장 쉬운방법
+	
 	``` swift
         example(of: "merge") {
             // 1
@@ -139,8 +145,11 @@ RxSwfit Recture
 	* 합칠 수 있는 sequence의 수를 제한하기 위해 사용
 
 ## D. 요소 결합하기
+
 1. combineLatest(::resultSelector:)
+
 	* 결합된 Sequence들은 값을 방출 할때마다 제공한 클로저를 호출하며 각각 내부 Sequence들의 최종값을 받는다.
+	
 	``` swift
         example(of: "combineLast") {
             let left = PublishSubject<String>()
@@ -199,10 +208,14 @@ RxSwfit Recture
 	strings.joined(separator: " ")
 	}
 	```
+
 3. zip
 	* 일련의 Observable이 새 값을 각자 방출 할 때까지 기다리다가, 둘 중 하나의 Observable이라도 완료되면 zip이 완료 된다.
+
 	* 더 긴 Observable이 남아있더라도 기다리지 않는다.
+	
 	* indexed sequencing : sequence에 따라 단계별로 작동하는 방법을 가르킨다.
+	
 	``` swift
         example(of: "zip") {
             // 1
