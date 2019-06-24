@@ -16,7 +16,7 @@ RxSwiftRect Recture
 [5강 Transforming Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect05.md)
 ===========
 * * *
-[6강 Next, Error, Complete](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect06.md)
+[6강 Combining Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect06.md)
 ===========
 * * *
 [7강 Scheduler](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect07.md)
