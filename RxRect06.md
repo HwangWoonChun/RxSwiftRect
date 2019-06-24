@@ -10,9 +10,9 @@ RxSwfit Recture
 ## B. 앞에 붙이기 - append
 
 1. startWith(_:)
-* observer가 초기값을 받을 수 있도록 해줌
+	* observer가 초기값을 받을 수 있도록 해줌
 
-``` swift
+	``` swift
         example(of: "startWith") {
             // 1
             let numbers = Observable.of(2, 3, 4)
@@ -30,13 +30,13 @@ RxSwfit Recture
              4
              */
         }
-```
+	```
 
 2. observable.concat(_:)
-* 두개의 Sequence를 하나로 묶음
-* 두 Observable의 요소들의 타입이 같아야 한다.
+	* 두개의 Sequence를 하나로 묶음
+	* 두 Observable의 요소들의 타입이 같아야 한다.
 
-``` swift
+	``` swift
         example(of: "Observable.concat") {
             // 1
             let first = Observable.of(1, 2, 3)
@@ -58,13 +58,13 @@ RxSwfit Recture
              6
              */
         }
-```
+	```
 
 3. concatMap(_:)
-* flatMap은 Observable에서 발행한 아이템을 다른 Observable 로 만드는 것이다.
-* concatMap은 각각의 sequence가 다음 sequence가 구독되기전에 합쳐지는 것을 보증 하는 것이다.
+	* flatMap은 Observable에서 발행한 아이템을 다른 Observable 로 만드는 것이다.
+	* concatMap은 각각의 sequence가 다음 sequence가 구독되기전에 합쳐지는 것을 보증 하는 것이다.
 
-``` swift
+	``` swift
         example(of: "concatMap") {
             // 1. 두개의 시퀀스 준비
             let sequences = ["Germany": Observable.of("Berlin", "Münich", "Frankfurt"),
@@ -88,12 +88,12 @@ RxSwfit Recture
              Valencia
              */
         }
-```
+	```
 
 ## C. 합치기 - Combining
 1. merge()
-* 합치기 가장 쉬운방법
-``` swift
+	* 합치기 가장 쉬운방법
+	``` swift
         example(of: "merge") {
             // 1
             let left = PublishSubject<String>()
@@ -134,14 +134,14 @@ RxSwfit Recture
          Right :Valencia
          */
     }
-```
+	```
 2. merge(maxConcurrent:)
-* 합칠 수 있는 sequence의 수를 제한하기 위해 사용
+	* 합칠 수 있는 sequence의 수를 제한하기 위해 사용
 
 ## D. 요소 결합하기
 1. combineLatest(::resultSelector:)
-* 결합된 Sequence들은 값을 방출 할때마다 제공한 클로저를 호출하며 각각 내부 Sequence들의 최종값을 받는다.
-``` swift
+	* 결합된 Sequence들은 값을 방출 할때마다 제공한 클로저를 호출하며 각각 내부 Sequence들의 최종값을 받는다.
+	``` swift
         example(of: "combineLast") {
             let left = PublishSubject<String>()
             let right = PublishSubject<String>()
@@ -178,8 +178,8 @@ RxSwfit Recture
              Have a good day, RxSwift
              */
         }
-```
-``` swift
+	```
+	``` swift
         example(of: "combine user choice and value") {
             let choice:Observable<DateFormatter.Style> = Observable.of(.short, .long)
             let dates = Observable.of(Date())
@@ -192,18 +192,18 @@ RxSwfit Recture
             
             observable.subscribe(onNext: { print($0) })
         }
-```
-``` swift
-//array 내 최종 값을 결합할 수 있다.
-     let observable = Observable.combineLatest([left, right]) { strings in
-         strings.joined(separator: " ")
-     }
-```
+	```
+	``` swift
+	//array 내 최종 값을 결합할 수 있다.
+	let observable = Observable.combineLatest([left, right]) { strings in
+	strings.joined(separator: " ")
+	}
+	```
 3. zip
-* 일련의 Observable이 새 값을 각자 방출 할 때까지 기다리다가, 둘 중 하나의 Observable이라도 완료되면 zip이 완료 된다.
-* 더 긴 Observable이 남아있더라도 기다리지 않는다.
-* indexed sequencing : sequence에 따라 단계별로 작동하는 방법을 가르킨다.
-``` swift
+	* 일련의 Observable이 새 값을 각자 방출 할 때까지 기다리다가, 둘 중 하나의 Observable이라도 완료되면 zip이 완료 된다.
+	* 더 긴 Observable이 남아있더라도 기다리지 않는다.
+	* indexed sequencing : sequence에 따라 단계별로 작동하는 방법을 가르킨다.
+	``` swift
         example(of: "zip") {
             // 1
             enum Weatehr {
@@ -231,7 +231,7 @@ RxSwfit Recture
              */
 	     //Vienna는 출력되지 않는다.
         }
-```
+	```
 
 ## E. Trigger
 
@@ -239,7 +239,7 @@ RxSwfit Recture
 
 1. withLatestFrom(_:)
 	* 새 이벤트 추가되기 전에 최신 값을 출력
-``` swift
+	``` swift
 	example(of: "withLatestFrom") {
             // 1
             let button = PublishSubject<Void>()
@@ -261,10 +261,10 @@ RxSwfit Recture
              Paris
              */
         }
-```
+	```
 2. sample(_:)
 	* 새 이벤트 추가되기 전에 최신 값을 한번만 출력
-``` swift
+	``` swift
         example(of: "withLatestFrom") {
             // 1
             let button = PublishSubject<Void>()
@@ -286,11 +286,12 @@ RxSwfit Recture
              Paris
              */
         }
-```
+	```
 ## F. Switches
 1. amb(_:)
 	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 하나를 방출 하기 시작하면 나머지는 구독을 중단한다.  
-``` swift
+
+	``` swift
         example(of: "amb") {
             let left = PublishSubject<String>()
             let right = PublishSubject<String>()
@@ -316,10 +317,10 @@ RxSwfit Recture
              Madrid
              */
         }
-```
+	```
 2. switchLatest()
 	* 두 가지 sequence의 이벤트 중 어떤 것을 구독할지 선택한다. 두개 중 어떤 것이든 요소를 모두 방출 하는 것을 기다리다가 최신 값을 구독한다.
-``` swift
+	``` swift
 	example(of: "switchLatest") {
             // 1
             let one = PublishSubject<String>()
@@ -358,7 +359,7 @@ RxSwfit Recture
              Nope. It's me, one!
              */
         }
-```
+	```
 ## G. Sequence 내 요소들 간의 결합
 1. reduce(::)
 	* 스위프트의 표준라이브러리인 reduce는 초기값을 정하고 배열을 조합하여 새로운 하나의 데이터를 생성하는 것이다.
