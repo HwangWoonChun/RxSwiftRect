@@ -377,8 +377,7 @@ RxSwfit Recture
 1. reduce(::)
 	* 스위프트의 표준라이브러리인 reduce는 초기값을 정하고 배열을 조합하여 새로운 하나의 데이터를 생성하는 것이다.
 	* 초기값부터 시작하여 값이 방출 할때마다 그 값을 가공한다.
-``` swift
-    override func viewDidLoad() {
+	``` swift
         example(of: "reduce") {
             let source = Observable.of(1, 3, 5, 7, 9)
             
@@ -399,8 +398,7 @@ RxSwfit Recture
              */
             
         }
-    }
-```
+	```
 2. scan(_:accumulator)
 	* reduce와 동일 하게 동작하나 리턴 값이 Observable이다.
 	* accumlator의 과정을 모두 출력 할 수 있다.
