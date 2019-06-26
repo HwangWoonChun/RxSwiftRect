@@ -19,7 +19,7 @@ RxSwiftRect Recture
 [6강 Combining Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect06.md)
 ===========
 * * *
-[7강 Scheduler](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect07.md)
+[7강 RXCococa Beggning](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect07.md)
 ===========
 * * *
 [8강 RxCococa](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect08.md)
