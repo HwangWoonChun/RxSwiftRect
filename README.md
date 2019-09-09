@@ -7,7 +7,7 @@ RxSwiftRect Recture
 [2강 Observable](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect02.md)
 ===========
 * * *
-[3강 Disposable, DisposeBag](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect03.md)
+[3강 Subject](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect03.md)
 ===========
 * * *
 [4강 Filtering Operator](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect04.md)
