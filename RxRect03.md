@@ -218,7 +218,7 @@ class ViewController: UIViewController {
 
 4. Variable : Behavior subject를 래핑하고 최신 값만 subscriber에 방출
 
-   * 현재의 값을 상태로 보유 한다.
+   * Observable의 현재의 값을 상태로 보유 한다.
    * value를 가지기 위해서는 일반적인 observable, subject 와는 다른 방법으로 추가
    * next, completed, error 추가 불가
    * 에러가 발생하지 않을 것임을 보증 / variable 할당해제 시 자동 완료
