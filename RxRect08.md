@@ -217,3 +217,95 @@ subject.onNext(9999)
  3) completed
 */
 ```
+
+6. MVVM으로 적용해보기 : 인풋과 아웃풋을 연결하고 수정해야될 부분 및 버그가 일어날 곳은 오로지 비즈니스 로직 뿐이다.
+``` swift
+import Foundation
+import RxCocoa
+import RxSwift
+
+struct ViewModel {
+    
+    //
+    let emailText = BehaviorSubject(value: "")
+    let pwdText = BehaviorSubject(value: "")
+
+    //
+    let isEmailValid = BehaviorSubject(value: false)
+    let isPasswordValid = BehaviorSubject(value: false)
+    
+    
+    //
+    init(){
+        _ = emailText.distinctUntilChanged()
+            .map(checkEmailValid)
+            .bind(to: isEmailValid)
+        
+        _ = pwdText.distinctUntilChanged()
+            .map(checkPwdValid)
+            .bind(to: isPasswordValid)
+    }
+    
+    //business Logic
+    private func checkEmailValid(_ email : String) -> Bool{
+        return email.contains("@") && email.contains(".")
+    }
+ 
+    private func checkPwdValid(_ pwd : String) -> Bool{
+        return pwd.count > 5
+    }
+}
+```
+
+``` swift
+import RxCocoa
+import RxSwift
+import UIKit
+
+class ViewController: UIViewController {
+    var disposeBag = DisposeBag()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindUI()
+    }
+    
+    // MARK: - IBOutler
+    
+    @IBOutlet var idField: UITextField!
+    @IBOutlet var pwField: UITextField!
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var idValidView: UIView!
+    @IBOutlet var pwValidView: UIView!
+
+    let viewModel : ViewModel! = ViewModel()
+    
+    // MARK: - Bind UI
+    
+    private func bindUI() {
+        
+        //input 처리
+        idField.rx.text.orEmpty
+            .bind(to: viewModel.emailText)
+            .disposed(by: disposeBag)
+        
+        pwField.rx.text.orEmpty
+            .bind(to: viewModel.pwdText)
+            .disposed(by: disposeBag)
+        
+        //output
+        viewModel.isEmailValid.bind(to: idValidView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.isPasswordValid.bind(to: pwValidView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        //
+        Observable.combineLatest(viewModel.isEmailValid, viewModel.isPasswordValid, resultSelector : {$0 && $1})
+            .bind(to: loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+    }
+    
+}
+``` 
