@@ -22,7 +22,7 @@ RxSwiftRect Recture
 [7강 RXCococa Beggning](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect07.md)
 ===========
 * * *
-[8강 RxCococa](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect08.md)
+[8강 RxCococa + Input Output Without MVVM](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect08.md)
 ===========
 * * *
 [9강 기본 Driver](https://github.com/HwangWoonChun/RxSwiftRect/blob/master/RxRect09.md)
